@@ -1,5 +1,8 @@
 package com.sda.cezklosowski.ztmstats;
 
+import com.sda.cezklosowski.ztmstats.inbound.DataProvider;
+import com.sda.cezklosowski.ztmstats.model.ZtmData;
+
 /*
     1. Utwórz nowy projekt mavenowy (archetyp quickstart) - ztm-stats. Pakietem głównym niech będzie: com.sda.<twoje imię>.ztmstats
 2. Dodaj dependencję
@@ -27,8 +30,10 @@ Dodaj do UIThread odpowiednie opcje.
      */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+    public static void main( String[] args ) {
+        System.out.println("Hello World!");
+        DataProvider dataProvider = new DataProvider();
+        ZtmData ztmData = dataProvider.getZtmData();
+        System.out.println(ztmData);
     }
 }
