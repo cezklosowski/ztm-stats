@@ -1,5 +1,6 @@
-public class Main {
-    /*
+package com.sda.cezklosowski.ztmstats;
+
+/*
     1. Utwórz nowy projekt mavenowy (archetyp quickstart) - ztm-stats. Pakietem głównym niech będzie: com.sda.<twoje imię>.ztmstats
 2. Dodaj dependencję
     <dependency>
@@ -24,8 +25,10 @@ public class Main {
 Dodaj do UIThread odpowiednie opcje.
 13. Zastanówmy się nad możliwymi metodami wyłączenia aplikacji.
      */
-
-    public static void main(String[] args) {
-        
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "Hello World!" );
     }
 }
