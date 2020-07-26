@@ -38,6 +38,7 @@ public class App {
         DataStorage dataStorage = new DataStorage();
 
         QueryThread queryThread = new QueryThread(dataStorage);
+        queryThread.setDaemon(true); // wątek, który nie będzie blokował wyłączenia aplikacji; niech chodzi sobie w tle, ale jak zamykam inny, to ten też się wyłączy
         UIThread uiThread = new UIThread(dataStorage);
 
         queryThread.start();
