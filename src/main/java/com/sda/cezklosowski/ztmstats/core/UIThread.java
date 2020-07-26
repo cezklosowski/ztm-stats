@@ -21,9 +21,13 @@ public class UIThread extends Thread {
     public void run() {
 
         Scanner sc = new Scanner(System.in);
-        int chosenOption = sc.nextInt();
-
+        int chosenOption;
         do {
+            System.out.println("Please choose an option:");
+            System.out.println("1 - Print all vehicles");
+            System.out.println("0 - Quit");
+
+            chosenOption = sc.nextInt();
             if (chosenOption == 1) {
                 System.out.println(dataStorage.getVehicles());
             }
