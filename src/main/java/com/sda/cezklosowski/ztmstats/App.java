@@ -1,6 +1,9 @@
 package com.sda.cezklosowski.ztmstats;
 
+import com.sda.cezklosowski.ztmstats.core.DataStorage;
+import com.sda.cezklosowski.ztmstats.core.UIThread;
 import com.sda.cezklosowski.ztmstats.inbound.DataProvider;
+import com.sda.cezklosowski.ztmstats.inbound.QueryThread;
 import com.sda.cezklosowski.ztmstats.model.ZtmData;
 
 /*
@@ -28,12 +31,18 @@ import com.sda.cezklosowski.ztmstats.model.ZtmData;
 Dodaj do UIThread odpowiednie opcje.
 13. Zastanówmy się nad możliwymi metodami wyłączenia aplikacji.
      */
-public class App 
-{
-    public static void main( String[] args ) {
-        System.out.println("Hello World!");
-        DataProvider dataProvider = new DataProvider();
-        ZtmData ztmData = dataProvider.getZtmData();
-        System.out.println(ztmData);
+public class App {
+    public static void main(String[] args) {
+        System.out.println("Starting ZTM-STATS application");
+
+        DataStorage dataStorage = new DataStorage();
+
+        QueryThread queryThread = new QueryThread(dataStorage);
+        UIThread uiThread = new UIThread(dataStorage);
+
+        queryThread.start();
+        uiThread.start();
+
+
     }
 }

@@ -22,6 +22,8 @@ public class QueryThread extends Thread {
     @Override
     public void run() {
 
+        // do work
+
         while (true) {
             Optional<ZtmData> optionalOfZtmData = DataProvider.getZtmData();
             optionalOfZtmData.ifPresentOrElse(

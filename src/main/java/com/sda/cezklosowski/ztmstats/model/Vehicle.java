@@ -35,4 +35,13 @@ public class Vehicle {
     public void setDelay(Integer delay) {
         this.delay = delay;
     }
+
+    @Override
+    public String toString() {
+        return "Vehicle{" +
+                "line='" + line + '\'' +
+                ", speed=" + speed +
+                ", delay=" + delay +
+                '}';
+    }
 }

@@ -4,6 +4,7 @@ import com.sda.cezklosowski.ztmstats.model.Vehicle;
 import com.sda.cezklosowski.ztmstats.model.ZtmData;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class DataStorage {
     public void update(ZtmData ztmData) {
         updateTime = LocalDateTime.parse(ztmData.getUpdateTime(), DATE_TIME_FORMAT);
         vehicles = ztmData.getVehicleList();
+        System.out.println("Updated storage at " + LocalTime.now());
     }
 
     public LocalDateTime getUpdateTime() {
