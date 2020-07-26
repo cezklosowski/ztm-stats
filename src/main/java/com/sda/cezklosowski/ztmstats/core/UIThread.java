@@ -29,7 +29,7 @@ public class UIThread extends Thread {
 
             chosenOption = sc.nextInt();
             if (chosenOption == 1) {
-                System.out.println(dataStorage.getVehicleDTOS());
+                System.out.println(dataStorage.getVehicles());
             }
 
         } while (chosenOption != 0);

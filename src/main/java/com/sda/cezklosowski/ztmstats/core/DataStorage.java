@@ -1,5 +1,6 @@
 package com.sda.cezklosowski.ztmstats.core;
 
+import com.sda.cezklosowski.ztmstats.model.Vehicle;
 import com.sda.cezklosowski.ztmstats.model.VehicleDTO;
 import com.sda.cezklosowski.ztmstats.model.ZtmData;
 
@@ -7,16 +8,19 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class DataStorage {
     private static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private LocalDateTime updateTime;
-    private List<VehicleDTO> vehicleDTOS;
+    private List<Vehicle> vehicles;
 
     public void update(ZtmData ztmData) {
         updateTime = LocalDateTime.parse(ztmData.getUpdateTime(), DATE_TIME_FORMAT);
-        vehicleDTOS = ztmData.getVehicleDTOList();
+        vehicles = ztmData.getVehicleDTOList().stream()
+                .map(DataStorage::mapVehicle)
+                .collect(Collectors.toList());
         System.out.println("Updated storage at " + LocalTime.now());
     }
 
@@ -28,11 +32,15 @@ public class DataStorage {
         this.updateTime = updateTime;
     }
 
-    public List<VehicleDTO> getVehicleDTOS() {
-        return vehicleDTOS;
+    public List<Vehicle> getVehicles() {
+        return vehicles;
     }
 
-    public void setVehicleDTOS(List<VehicleDTO> vehicleDTOS) {
-        this.vehicleDTOS = vehicleDTOS;
+    public void setVehicles(List<Vehicle> vehicles) {
+        this.vehicles = vehicles;
+    }
+
+    public static Vehicle mapVehicle(VehicleDTO vehicleDTO) {
+        return new Vehicle(vehicleDTO.getLine(), vehicleDTO.getSpeed(), vehicleDTO.getDelay());
     }
 }
