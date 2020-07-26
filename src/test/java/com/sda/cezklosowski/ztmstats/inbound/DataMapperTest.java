@@ -1,6 +1,6 @@
 package com.sda.cezklosowski.ztmstats.inbound;
 
-import com.sda.cezklosowski.ztmstats.model.Vehicle;
+import com.sda.cezklosowski.ztmstats.model.VehicleDTO;
 import com.sda.cezklosowski.ztmstats.model.ZtmData;
 import org.junit.Test;
 
@@ -22,9 +22,9 @@ public class DataMapperTest {
         String testJson = new String(resourceAsStream.readAllBytes(), Charset.defaultCharset());
         //when
         ZtmData ztmData = DataMapper.mapJsonToZtmData(testJson);
-        List<Vehicle> vehicles = ztmData.getVehicleList();
+        List<VehicleDTO> vehicleDTOS = ztmData.getVehicleDTOList();
         //then
-        assertEquals(7, vehicles.size());
-        assertEquals("118", vehicles.get(1).getLine());
+        assertEquals(7, vehicleDTOS.size());
+        assertEquals("118", vehicleDTOS.get(1).getLine());
     }
 }

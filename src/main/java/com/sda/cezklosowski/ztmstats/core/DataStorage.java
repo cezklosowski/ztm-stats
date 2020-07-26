@@ -1,6 +1,6 @@
 package com.sda.cezklosowski.ztmstats.core;
 
-import com.sda.cezklosowski.ztmstats.model.Vehicle;
+import com.sda.cezklosowski.ztmstats.model.VehicleDTO;
 import com.sda.cezklosowski.ztmstats.model.ZtmData;
 
 import java.time.LocalDateTime;
@@ -12,11 +12,11 @@ public class DataStorage {
     private static final DateTimeFormatter DATE_TIME_FORMAT = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     private LocalDateTime updateTime;
-    private List<Vehicle> vehicles;
+    private List<VehicleDTO> vehicleDTOS;
 
     public void update(ZtmData ztmData) {
         updateTime = LocalDateTime.parse(ztmData.getUpdateTime(), DATE_TIME_FORMAT);
-        vehicles = ztmData.getVehicleList();
+        vehicleDTOS = ztmData.getVehicleDTOList();
         System.out.println("Updated storage at " + LocalTime.now());
     }
 
@@ -28,11 +28,11 @@ public class DataStorage {
         this.updateTime = updateTime;
     }
 
-    public List<Vehicle> getVehicles() {
-        return vehicles;
+    public List<VehicleDTO> getVehicleDTOS() {
+        return vehicleDTOS;
     }
 
-    public void setVehicles(List<Vehicle> vehicles) {
-        this.vehicles = vehicles;
+    public void setVehicleDTOS(List<VehicleDTO> vehicleDTOS) {
+        this.vehicleDTOS = vehicleDTOS;
     }
 }

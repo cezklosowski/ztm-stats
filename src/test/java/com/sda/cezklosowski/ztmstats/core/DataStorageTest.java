@@ -29,7 +29,7 @@ public class DataStorageTest {
         LocalDateTime actualUpdateTime = dataStorage.getUpdateTime();
 
         assertEquals(expectedDateTime, actualUpdateTime);
-        assertEquals(7, dataStorage.getVehicles().size());
+        assertEquals(7, dataStorage.getVehicleDTOS().size());
     }
 
 }
